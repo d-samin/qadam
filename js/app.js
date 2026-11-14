@@ -35,8 +35,12 @@ function view(){
     })?h:'home';
 }
 
+// function tag(n,t){
+//     return '<span class="tag">Страница 0'+n+' / '+t+'</span>';
+// }
+
 function tag(n,t){
-    return '<span class="tag">Страница 0'+n+' / '+t+'</span>';
+    return '<span class="tag">'+n+' / '+t+'</span>';
 }
 
 function sel(id,l,o,v){
@@ -101,7 +105,7 @@ function home(){
 /* ---------- Каталог ---------- */
 
 function catalog(){
-    return '<section class="card">'+tag(2,'Каталог')+'<h1>Особенности развития</h1><p class="mute">Выберите направление или найдите особенность по названию.</p><input id="q" value="'+esc(S.q)+'" placeholder="Например: заикание, РАС, дислексия" aria-label="Поиск"></section><div id="cl">'+catBody()+'</div>';
+    return '<section class="card">'+'<h1>Особенности развития</h1><p class="mute">Выберите направление или найдите особенность по названию.</p><input id="q" value="'+esc(S.q)+'" placeholder="Например: заикание, РАС, дислексия" aria-label="Поиск"></section><div id="cl">'+catBody()+'</div>';
 }
 
 function catBody(){
@@ -234,7 +238,7 @@ function side(){
 }
 
 function specs(){
-    return '<section class="card">'+tag(4,'Поиск')+'<h1>Найдите своего специалиста</h1><input id="q" value="'+esc(S.q)+'" placeholder="Имя, специальность или особенность" aria-label="Поиск"></section><div class="lay"><aside class="card" id="side">'+side()+'</aside><div id="res"></div></div>';
+    return '<section class="card">'+'<h1>Найдите своего специалиста</h1><input id="q" value="'+esc(S.q)+'" placeholder="Имя, специальность или особенность" aria-label="Поиск"></section><div class="lay"><aside class="card" id="side">'+side()+'</aside><div id="res"></div></div>';
 }
 
 function res(){
@@ -322,7 +326,7 @@ function cbForm(){
 }
 
 function navStep(){
-    var s=NV[S.step],t='<section class="card">'+tag(3,'Навигатор')+'<h1>Давайте разберёмся вместе</h1>'+'<div class="bars">'+[0,1,2,3,4,5].map(function(i){
+    var s=NV[S.step],t='<section class="card">'+'<h1>Давайте разберёмся вместе</h1>'+'<div class="bars">'+[0,1,2,3,4,5].map(function(i){
         return '<i class="'+(i<=S.step?'on':'')+'"></i>';
     }).join('')+'</div><div class="mute">Шаг '+(S.step+1)+' из 6</div>';
 
@@ -356,7 +360,7 @@ function navigator_(){
     pickF();
     var m=SPEC.filter(match).slice(0,3);
 
-    return '<section class="card">'+tag(3,'Результат')+'<h1>Ваши результаты</h1><p><span class="tag ok">Анкета заполнена</span></p><div class="mute">'+[A.known,A.age,A.place].join(' · ')+'</div><h2 style="margin-top:14px">По вашим ответам стоит рассмотреть консультации</h2>'
+    return '<section class="card">'+'<h1>Ваши результаты</h1><p><span class="tag ok">Анкета заполнена</span></p><div class="mute">'+[A.known,A.age,A.place].join(' · ')+'</div><h2 style="margin-top:14px">По вашим ответам стоит рассмотреть консультации</h2>'
     +recs.map(function(r,i){
         return '<div class="card lil" style="padding:14px"><b>'+(i+1)+'. '+r[0]+'</b><div class="mute">'+r[1]+'</div></div>';
     }).join('')
@@ -391,7 +395,7 @@ var RES={
 function support(){
     var g=ls('grp',[]);
 
-    return '<section class="card hero">'+tag(5,'Поддержка')+'<h1>Вы не одни</h1><p class="mute">Тревога, усталость и одиночество — частая часть пути. Здесь можно получить помощь и для себя.</p><button class="btn" data-go="hard">Мне сейчас тяжело</button></section>'
+    return '<section class="card hero">'+'<h1>Вы не одни</h1><p class="mute">Тревога, усталость и одиночество — частая часть пути. Здесь можно получить помощь и для себя.</p><button class="btn" data-go="hard">Мне сейчас тяжело</button></section>'
     +'<section class="card"><h2>Психологическая поддержка</h2>'+['Индивидуальные консультации психолога','Онлайн-консультации','Семейные консультации','Группы психологической поддержки','Профилактика эмоционального выгорания','Адаптация после получения диагноза'].map(function(x){
         return '<a class="lnk" href="#specialists" data-psy>'+x+'<span>›</span></a>';
     }).join('')+'</section>'
@@ -427,12 +431,12 @@ function events(){
         return(!EF.cat||e.cat==EF.cat)&&(!EF.pr||(EF.pr=='f'?e.free:!e.free))&&(!EF.ft||e.feat.indexOf(EF.ft)>-1);
     });
 
-    return '<section class="card hero">'+tag(6,'Inclusive Together')+'<h1>Городские активности — для всех детей</h1><p class="mute">Не делим детей по особенностям: обычные мероприятия становятся доступными, а организаторы заранее указывают условия.</p></section>'
+    return '<section class="card hero">'+'<h1>Городские активности — для всех детей</h1><p class="mute">Не делим детей по особенностям: обычные мероприятия становятся доступными, а организаторы заранее указывают условия.</p></section>'
     +'<section class="card"><div class="two"><div>'+sel('e-cat','Направление',[['','Все'],'Творчество','Технологии','Спорт','Культура','Социализация','Природа','Семья'],EF.cat)+'</div><div>'+sel('e-pr','Цена',[['','Любая'],['f','Бесплатные'],['p','Платные']],EF.pr)+'</div></div>'+sel('e-ft','Условие доступности',[['','Любое']].concat(FEATS.concat(['Небольшая группа'])),EF.ft)+'</section><div id="evl">'
     +(l.length?l.map(function(e){
         return '<article class="card sc"><div class="hd"><h3>'+e.t+'</h3><span class="tag">'+e.cat+'</span></div><div class="mute">'+e.age+' · '+e.city+' · '+new Date(e.date).toLocaleDateString('ru-RU')+' · '+(e.free?'Бесплатно':e.price+' ₸')+'</div><p>'+e.desc+'</p><b>Условия доступности</b><ul>'+e.feat.map(function(f){
             return '<li>'+f+'</li>';
-        }).join('')+'</ul><button class="btn full" data-reg="'+e.id+'">'+(r.indexOf(e.id)>-1?'Вы записаны ✓':'Подробнее о регистрации')+'</button><p class="mute">Демонстрационный пример, не реальное мероприятие.</p></article>';
+        }).join('')+'</ul><button class="btn full" data-reg="'+e.id+'">'+(r.indexOf(e.id)>-1?'Вы записаны ✓':'Подробнее о регистрации')+'</button><p class="mute"></p></article>';
     }).join(''):'<div class="card">Ничего не найдено.</div>')+'</div>'
     +'<section class="card"><h2>Как организатору попасть в афишу</h2><ol><li>Регистрация организатора</li><li>Короткое обучение по инклюзивной организации</li><li>Указание условий доступности</li><li>Проверка командой QADAM</li><li>Публикация в афише</li><li>Регистрация детей родителями</li><li>Отзывы после мероприятия</li></ol></section>'
     +'<section class="card"><h2>Волонтёры</h2><p class="mute">Помощь с ориентацией на площадке, творческие занятия, сопровождение групп вместе с ответственным взрослым. Волонтёр не заменяет родителя, педагога или врача. Обязательны проверка, обучение и правила защиты детей; никаких индивидуальных встреч с несовершеннолетними без контроля.</p></section>';
@@ -451,7 +455,8 @@ function safety(){
         ['История записей','Только данные записи']
     ];
 
-    return '<section class="card hero">'+tag(7,'Безопасность')+'<h1>Ваша безопасность</h1><p class="mute">Мы собираем как можно меньше данных. Абсолютную безопасность обещать нельзя — ниже честно описаны меры и ограничения.</p></section>'
+    // return '<section class="card hero">'+tag(7,'Безопасность')+'<h1>Ваша безопасность</h1><p class="mute">Мы собираем как можно меньше данных. Абсолютную безопасность обещать нельзя — ниже честно описаны меры и ограничения.</p></section>'
+    return '<section class="card hero">'+'<h1>Ваша безопасность</h1><p class="mute">Мы собираем как можно меньше данных. Абсолютную безопасность обещать нельзя — ниже честно описаны меры и ограничения.</p></section>'
     +'<section class="card"><h2>Какие данные собираем</h2><table class="tb">'+T.map(function(r){
         return '<tr><td>'+r[0]+'</td><td class="mute">'+r[1]+'</td></tr>';
     }).join('')+'</table><p class="mute">Родитель не должен загружать заключения, чтобы смотреть каталог. Отдельного профиля ребёнка нет: всё управляется через аккаунт родителя.</p></section>'
@@ -511,7 +516,7 @@ function cbSend(){
 
     sv('cb',a);
 
-    $('#cbx').innerHTML='<h2>Заявка принята</h2><p>Консультант позвонит в выбранное время: '+esc($('#cb-w').value)+'. (В демо данные сохранены только в этом браузере.)</p>';
+    $('#cbx').innerHTML='<h2>Заявка принята</h2><p>Консультант позвонит в выбранное время: '+esc($('#cb-w').value)+'. </p>';
 }
 
 document.addEventListener('click',function(e){
