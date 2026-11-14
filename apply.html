@@ -1,0 +1,25 @@
+<!DOCTYPE html><html lang="ru"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700;800&display=swap"><link rel="stylesheet" href="css/style.css"><title>Заявка специалиста: QADAM</title></head><body><div class="w">
+<header class="card"><div class="logo"><div class="lg">Q</div><div><b>QADAM</b><small>Заявка специалиста</small></div></div><a href="index.html" class="btn out">На сайт</a></header>
+<main class="card" id="m"><h1>Стать специалистом</h1>
+<p class="mute">Профиль появится на сайте только после того, как администратор проверит документы. Обычно это занимает несколько дней.</p>
+<form id="f">
+<label for="name">Имя и фамилия</label><input id="name" name="name" required minlength="2" maxlength="100" autocomplete="name">
+<label for="role">Специальность</label><input id="role" name="role" required maxlength="80" placeholder="Например: логопед">
+<label for="category">Направление</label><select id="category" name="category" required><option value="">Выберите</option><option value="speech">Речь и коммуникация</option><option value="learn">Обучение и развитие</option><option value="sense">Слух и зрение</option><option value="motor">Двигательное развитие</option><option value="sensory">Сенсорное развитие</option><option value="emo">Эмоциональное состояние</option></select>
+<label for="city">Город</label><select id="city" name="city" required><option>Алматы</option><option>Астана</option><option>Шымкент</option><option>Другой город</option></select>
+<label>Языки консультации</label><label class="ck"><input type="checkbox" name="langs" value="ru" checked>Русский</label><label class="ck"><input type="checkbox" name="langs" value="kk">Қазақша</label>
+<div class="row"><div style="flex:1"><label for="ageMin">Возраст детей от</label><input id="ageMin" name="ageMin" type="number" min="0" max="17" value="0" required></div><div style="flex:1"><label for="ageMax">до</label><input id="ageMax" name="ageMax" type="number" min="0" max="17" value="17" required></div></div>
+<label for="format">Формат приёма</label><select id="format" name="format"><option>Очный приём</option><option>Онлайн</option><option>Онлайн и очно</option></select>
+<label for="price">Стоимость приёма, ₸ (необязательно)</label><input id="price" name="price" type="number" min="0">
+<label for="bio">О себе (до 600 знаков)</label><textarea id="bio" name="bio" maxlength="600"></textarea>
+<label for="phone">Телефон (виден родителям)</label><input id="phone" name="phone" type="tel" required placeholder="+7 700 000 00 00">
+<label for="email">Email (виден только администратору)</label><input id="email" name="email" type="email" required>
+<label for="license_no">Номер лицензии или сертификата (необязательно)</label><input id="license_no" name="license_no" maxlength="60">
+<h2 style="margin-top:22px">Документы</h2><p class="mute">PDF, JPG или PNG, до 5 МБ каждый. Их видит только администратор.</p>
+<label for="id">Удостоверение личности</label><input id="id" name="id" type="file" accept=".pdf,.jpg,.jpeg,.png" required>
+<label for="diploma">Диплом об образовании</label><input id="diploma" name="diploma" type="file" accept=".pdf,.jpg,.jpeg,.png" required>
+<label for="license">Лицензия или сертификат (если есть)</label><input id="license" name="license" type="file" accept=".pdf,.jpg,.jpeg,.png">
+<label class="ck" style="margin-top:16px"><input type="checkbox" name="consent" required>Согласен(на) на обработку персональных данных для проверки и публикации профиля</label>
+<p class="err" id="err" role="alert"></p><button class="btn full" id="go">Отправить заявку</button></form></main>
+<section class="card"><h2>Уже подали заявку?</h2><label for="code">Код заявки</label><input id="code" placeholder="Например: 9F2A6B1C33D0"><button class="btn out full" id="chk">Проверить статус</button><p id="st" class="mute" style="margin-top:10px"></p></section>
+</div><script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.js"></script><script src="js/config.js"></script><script src="js/apply.js"></script></body></html>
